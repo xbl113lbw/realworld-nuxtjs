@@ -33,6 +33,10 @@
                     </form>
                 </div>
             </div>
+            <!-- 退出登录 -->
+            <button class="btn btn-outline-danger" @click="logout">
+                Or click here to logout.
+            </button>
         </div>
     </div>
 </template>
@@ -69,10 +73,14 @@ export default {
     methods: {
         async onSubmit () {
             const { data } = await updateUser({ user: this.userForm })
-
             // 更新保存的数据
             this.$store.commit("setUser", data.user)
             Cookie.set("user", data.user)
+        },
+        logout () {
+            Cookie.remove("user")
+            this.$store.commit("setUser", null)
+            this.$router.push("/")
         }
     }
 }

@@ -6,29 +6,20 @@
                 <Article-meta :article="article" />
             </div>
         </div>
-
         <div class="container page">
-
             <div class="row article-content">
                 <div class="col-md-12" v-html="article.body"></div>
             </div>
-
             <hr />
-
             <div class="article-actions">
                 <Article-meta :article="article" />
             </div>
-
             <div class="row">
-
                 <div class="col-xs-12 col-md-8 offset-md-2">
                     <Article-comments :article="article" />
                 </div>
-
             </div>
-
         </div>
-
     </div>
 </template>
 
@@ -44,6 +35,7 @@ export default {
     async asyncData ({ params }) {
         const { data } = await getArticle(params.slug)
         const { article } = data
+        console.log("article", article)
         const md = new MarkDownIt()
         article.body = md.render(article.body)
         return {
