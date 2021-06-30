@@ -59,8 +59,8 @@ export default {
         return {
             user: {
                 username: "",
-                email: "xbllbw@163.com",
-                password: "12345678"
+                email: "",
+                password: ""
             },
             // 错误信息
             errors: {}
